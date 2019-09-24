@@ -14,15 +14,16 @@ enum UserError: Error {
 }
 
 struct RequestManager {
-    let url = URL(string: "https://bnet.i-partner.ru/testAPI/")
-    var request: URLRequest!
+    private let apiToken = "P2nFvXi-VY-248kz2t"
+    private let url = URL(string: "https://bnet.i-partner.ru/testAPI/")
+    private var request: URLRequest!
     static var session: String!
     static var shared = RequestManager()
     
     init() {
         request = URLRequest(url: url!)
         request.httpMethod = "POST"
-        request.addValue("P2nFvXi-VY-248kz2t", forHTTPHeaderField: "token")
+        request.addValue(apiToken, forHTTPHeaderField: "token")
     }
     
     mutating func newSession() {
